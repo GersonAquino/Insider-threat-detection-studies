@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this research software, please cite the dissertation listed under preferred-citation. Cite the repository as well when referring to the code itself."
+type: software
+title: "Insider Threat Detection Studies"
+authors:
+  - family-names: Aquino
+    given-names: Gerson
+license: MIT
+repository-code: "https://github.com/GersonAquino/Insider-threat-detection-studies"
+preferred-citation:
+  type: thesis
+  authors:
+    - family-names: Aquino
+      given-names: Gerson
+  title: "Machine Learning Approaches for Insider Threat Detection: Challenges, Limitations, and Potential — A Critical Reimplementation and Evaluation of a Hybrid Temporal Convolutional Network–Transformer on CERT r4.2"
+  year: 2026
+  thesis-type: "Master's dissertation"
+  institution:
+    name: "University of Leiria and Oeste"
