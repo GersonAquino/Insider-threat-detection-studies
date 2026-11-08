@@ -1,0 +1,6 @@
+# Execution dependencies; not a reconstructed historical environment lock.
+numpy
+pandas>=2.0
+scikit-learn
+tensorflow[and-cuda]
+keras-tuner

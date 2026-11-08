@@ -1,0 +1,26 @@
+# Local environments and Python caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Dataset, intermediates, models and experiment outputs
+/data/
+outputs/
+*.pt
+*.pth
+*.joblib
+*.parquet
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Local editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

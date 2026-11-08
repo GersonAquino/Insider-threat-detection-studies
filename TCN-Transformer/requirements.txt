@@ -1,0 +1,9 @@
+# Reference Linux environment: Python 3.12.3.
+# Install PyTorch from the CUDA 12.8 wheel index first; see README.md.
+torch==2.11.0+cu128
+numpy==2.4.4
+pandas==3.0.2
+pyarrow==24.0.0
+joblib==1.5.3
+scikit-learn==1.8.0
+optuna==4.9.0

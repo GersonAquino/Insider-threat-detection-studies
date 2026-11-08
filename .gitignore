@@ -1,0 +1,51 @@
+# Local data and generated experiments
+/LLM/data/
+/LSTM_SPEDIA/data/
+/TCN-Transformer/data/
+**/outputs/
+/LLM/models/
+/LSTM_SPEDIA/models/
+/TCN-Transformer/models/
+**/checkpoints/
+**/logs/
+**/runs/
+*.h5
+*.hdf5
+*.keras
+*.pt
+*.pth
+*.onnx
+*.npy
+*.npz
+*.parquet
+*.csv
+*.jsonl
+*.db
+*.sqlite*
+# Python environments and caches
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.venv/
+**/venv/
+**/env/
+**/*.egg-info/
+**/build/
+**/dist/
+# Machine-specific configuration
+.env
+.env.*
+*.local.yaml
+*.local.yml
+*.local.json
+**/.idea/
+**/.vscode/
+Thumbs.db
+.DS_Store
+# Internal agent files
+AGENTS.md
+**/.agents/
+**/.codex/
+**/.claude/

@@ -1,0 +1,97 @@
+project_root: "."
+
+dataset:
+  name: "cert42_user_day_v1"
+  raw_dir: "data/raw/CERT/r4.2"
+  answers_glob: "data/raw/CERT/answers/r4.2-*/*.csv"
+  output_dir: "data/llm_subsets/cert_r4.2/user_day_v1"
+  variants:
+    - "day_only"
+    - "with_context"
+  context_days: 7
+  include_content_preview: true
+  content_preview_chars: 180
+  internal_email_domains:
+    - "dtaa.com"
+  internal_http_domains:
+    - "dtaa.com"
+  profile_sources:
+    - "ldap"
+    - "psychometric"
+  suspicious_http_keywords:
+    - "wikileaks"
+    - "keylogger"
+    - "spectorsoft"
+    - "dailykeylogger"
+    - "wellresearchedreviews"
+    - "job"
+    - "monster"
+    - "careerbuilder"
+    - "craigslist"
+    - "resume"
+
+duckdb:
+  database: ":memory:"
+  threads: 8
+  memory_limit: "16GB"
+
+sampling:
+  random_seed: 42
+  max_main_user_days: 3000
+  same_user_negatives_per_positive_user: 5
+  temporal_negatives_per_positive_day: 2
+  temporal_window_days: 7
+  similar_user_negatives_per_positive_day: 2
+  similar_temporal_window_days: 21
+  hard_negative_limit: 400
+  many_files_threshold: 25
+  off_hours_start: 7
+  off_hours_end: 19
+  volume_bins: [20, 100, 300]
+
+split:
+  test_size: 0.20
+  user_disjoint: true
+
+truncation:
+  max_events_per_user_day: 220
+  keep_start_events: 12
+  keep_end_events: 12
+
+llm:
+  variant: "day_only"
+  k_examples: 5
+  balance_example_labels: true
+  prefer_different_users: true
+  max_events_per_example: 120
+  max_events_for_test: 180
+  predictions_file: "llm_predictions.jsonl"
+  evaluation_report_file: "llm_evaluation_report.json"
+
+ollama:
+  base_url: "http://127.0.0.1:11434"
+  model: "qwen3:14b"
+  temperature: 0.0
+  num_ctx: 16384
+  timeout_seconds: 300
+  format:
+    type: "object"
+    required:
+      - "prediction"
+      - "confidence"
+      - "justification"
+    additionalProperties: false
+    properties:
+      prediction:
+        type: "string"
+        enum:
+          - "malicious"
+          - "benign"
+      confidence:
+        type: "number"
+        minimum: 0.0
+        maximum: 1.0
+      justification:
+        type: "string"
+  think: false
+
